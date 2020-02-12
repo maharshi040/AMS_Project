@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">      
+    <a class="navbar-brand"><i class="material-icons planeicon">
+        flight_takeoff
+        </i>GoAir</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/aboutus">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contactus">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/profile">Our Team</a>
+                </li>
+              </ul>
+              </div>
+
+      </nav>
+<div class="container-fluid home">
+    <div class="row">
+
+  <div class="col-2"></div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTuHx5dht50G6WfpahtXGnSgjHMdJQBdEYxAdMBuUlTv-cR00X6" alt="Card image cap" style="width:300px;height:300px;">
+      </div>
+      <div class="flip-card-back" (click)="Admin()">
+        <h1 class="col-2" >Admin</h1> 
+      </div>
+    </div>
+  </div>
+
+<div class="col-1"></div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfH8mkcE86ly801McKJvniv5xlEVvq5ZOR5oJySmfAO5GSwWlx" alt="Card image cap" style="width:300px;height:300px;">
+      </div>
+      <div class="flip-card-back" (click)="Manager()">
+        <h1 class="col-2" >Manager</h1> 
+      </div>
+    </div>
+  </div>
+
+<div class="col-1"></div>
+<div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="https://www.netclipart.com/pp/m/194-1944646_pilot-of-airplane-comments-icon-pilote.png" alt="Card image cap"style="width:300px;height:300px;">
+      </div>
+      <div class="flip-card-back" (click)="Pilot()">
+        <h1 class="col-2" >Pilot</h1> 
+      </div>
+    </div>
+  </div>
+
+<div class="col-2"></div>
+</div>
+</div>
+<app-flip-flop-footer></app-flip-flop-footer>

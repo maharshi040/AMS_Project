@@ -1,0 +1,53 @@
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">      
+    <a class="navbar-brand"><i class="material-icons planeicon">
+        flight_takeoff
+        </i>GoAir</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class=" active nav-link navstyle" routerLink="/requests">Requests</a>
+                </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle navstyle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Plane
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink='/addplane'>Add</a>
+                  <a class="dropdown-item" routerLink='/viewplane'>View</a>
+                </div>
+              </li>
+        
+        
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle navstyle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Hangar
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="/addhanger">Add</a>
+                </div>
+              </li>
+        
+        
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle navstyle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pilot
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink='/pilotworkschedule'>Work Schedule</a>
+                </div>
+              </li>
+        
+        
+              <li class="nav-item">
+                <a class="nav-link navstyle" routerLink="/feedback">Feedback</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link navstyle" routerLink="/home">Logout</a>
+                </li>
+            </ul>
+      </div>
+  </nav>

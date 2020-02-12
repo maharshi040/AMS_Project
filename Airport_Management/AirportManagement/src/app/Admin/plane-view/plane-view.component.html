@@ -1,0 +1,17 @@
+<app-admin></app-admin>
+<div class="row">
+<div *ngFor="let plane of planeDetails[0]">
+
+<div class="card mt-5 mb-5 ml-5" style="width: 18rem;">
+    <img class="card-img-top  mr-2 " src="https://s.marketwatch.com/public/resources/images/MW-HE536_airpla_ZH_20190225131547.jpg" alt="Card image cap">
+    <div class="card-body">
+
+      <h5 class="card-title">{{plane.planeId}}</h5>
+      <a [routerLink]="['/editplane',plane.planeId]" class="btn btn-primary">View More</a>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+

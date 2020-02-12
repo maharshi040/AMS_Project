@@ -1,0 +1,29 @@
+/* .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  .head{
+      text-align: center;
+  }
+  .btnadd{
+      margin-left: 700px;
+  } */
+ 
+.reg-heading
+{
+    
+    margin-top:50px;
+    margin-bottom: 20px;
+}
+.reg-form
+{
+    margin-top:50px;
+}
+.con-style
+{
+    margin-bottom:50px;
+}

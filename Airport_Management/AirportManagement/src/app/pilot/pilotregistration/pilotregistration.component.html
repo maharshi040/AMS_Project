@@ -1,0 +1,143 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">      
+    <a class="navbar-brand" [routerLink]="['']"><i class="material-icons planeicon">
+        flight_takeoff
+        </i>GoAir
+    </a>
+    <a class="navbar-link ml-auto text-white" [routerLink]="['/login',rolePilot]">Login</a>
+</nav>
+<div class="container-fluid con-style">
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+    <h2 class="reg-heading">Pilot Registration</h2>
+    <form class="forms reg-form" [formGroup]="pilotRegisterForm" (ngSubmit)="onPilotRegSubmit()">
+    
+        <!--LICENCE NUM-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="fname"> License Number</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+              <input type="text" formControlName="licenseNumber" class="form-control" id="fname"placeholder=" license Number" minlength="8" maxlength="8" required [ngClass]="{ 'is-invalid': submitted && f.licenseNumber.errors }">
+              <div *ngIf="submitted && (f.licenseNumber.errors )" class="is-invalid">
+                    <div *ngIf="f.licenseNumber.errors.required" class="text-danger">license Number is required</div>
+                    <div *ngIf="f.licenseNumber.errors.pattern" class="text-danger">license Number contain only alphabets</div>
+                    <div *ngIf="f.licenseNumber.errors.minlength" class="text-danger">License Number contains 8 Characters</div>
+                 </div>
+            </div>
+          </div>
+          
+          <!--ADDRESS LINE 1-->
+          <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="address1">Address 1</label>
+                <div class="col-sm-10 col-lg-10-col-md-10">
+                     <input type="text"  formControlName="addressLine1"  class="form-control" placeholder="Enter Address" id="address1" [ngClass]="{ 'is-invalid': submitted && f.addressLine1.errors }" >
+                    <div *ngIf="submitted && f.addressLine1.errors" class="is-invalid">
+                        <div *ngIf="f.addressLine1.errors.required" class="text-danger">Address 1 is required</div>
+                     </div>
+                </div>
+            </div>
+    
+          
+         <!--ADDRESS LINE 2-->
+         <div class="form-group row">
+            <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="address2">Address 2 Name</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                 <input type="text"  formControlName="addressLine2"  class="form-control" placeholder="Enter Address" id="address2" [ngClass]="{ 'is-invalid': submitted && f.addressLine2.errors }" >
+                <div *ngIf="submitted && f.addressLine2.errors" class="is-invalid">
+                    <div *ngIf="f.addressLine2.errors.required" class="text-danger">Address 2 is required</div>
+                 </div>
+            </div>
+        </div>
+    
+          <!--CITY-->
+         <div class="form-group row">
+             <label class="col-sm-2 col-form-label"for="city">City</label>
+             <div class="col-sm-10 col-lg-10-col-md-10">
+                 <input type="text" formControlName="city" class="form-control" placeholder="Enter City" id="city"  [ngClass]="{'is-invalid':submitted && f.city.errors}" >
+             
+             <div *ngIf="submitted && f.city.errors" class="is-invalid">
+                    <div *ngIf="f.city.errors.required" class="text-danger">City is required</div>        
+                    <div *ngIf="f.city.errors.pattern" class="text-danger">City conatins only Alphabets</div>
+            </div> 
+            </div>
+         </div>
+
+          <!--STATE-->
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label"for="state">State</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="state" class="form-control" placeholder="Enter State" id="state"  [ngClass]="{'is-invalid':submitted && f.state.errors}" >
+            
+            <div *ngIf="submitted && f.state.errors" class="is-invalid">
+                   <div *ngIf="f.state.errors.required" class="text-danger">state is required</div>    
+                   <div *ngIf="f.state.errors.pattern" class='text-danger'>state conatins only Alphabets</div>    
+           </div> 
+           </div>
+        </div>
+        <!--ZIP CODE-->
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label" for="zipcode">Zip Code</div>
+            <div class="col-sm-10 col-lg-10 col-md-10">
+                <input type="text" formControlName="zipcode" class="form-control" minlength="6" maxlength="6" Placeholder="Enter Zip Code" id="zipcode" [ngClass]="{'is-invalid':submitted && f.zipcode.errors}">
+                <div *ngIf="submitted && f.zipcode.errors" class="is-invalid">
+                    <div *ngIf="f.state.errors.required" class="text-danger">Zip Code is required</div>
+                    <div *ngIf="f.state.errors.pattern" class="text-danger">Zip Code Contains only numbers</div>
+                    <div *ngIf="f.state.errors.minlength" class="text-danger">Zip Code Contains 6 Numbers</div>
+                </div>
+            </div>
+        </div>
+
+        <!--SSN-->
+        <div class="form-group row">
+            <div class="col-sm-2 col-form-label" for="ssn">SSN</div>
+            <div class="col-sm-10 col-md-10 col-lg-10" >
+                <input type="text" formControlName="ssn" class="form-control" id="ssn" placeholder="Enter SSN" minlength="9" maxlength="9" [ngClass]="{'is-invalid':submitted && f.ssn.errors}">
+                <div *ngIf="submitted && f.ssn.errors " class="is-invalid">
+                    <div *ngIf="f.ssn.errors.required" class="text-danger">SSN is required</div>
+                    <div *ngIf="f.ssn.errors.minlength" class="text-danger">SSN contains atleast 9 numbers</div>
+                    <div *ngIf="f.ssn.errors.pattern" class="text-danger">SSN contains only numbers </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <!--PASSWORD-->
+        <!--SSN-->
+        <div class="form-group row">
+                <div class="col-sm-2 col-form-label" for="password">Password</div>
+                <div class="col-sm-10 col-md-10 col-lg-10" >
+                    <input type="password" formControlName="password" class="form-control" id="password" placeholder="Enter Password"  minlength="6" maxlength="12" [ngClass]="{'is-invalid':submitted && f.password.errors}">
+                    <div *ngIf="submitted && f.password.errors " class="is-invalid">
+                        <div *ngIf="f.password.errors.required" class="text-danger">Password is required</div>
+                        <div *ngIf="f.password.errors.pattern" class=text-danger >Password should contain atleast 1 Special character, alphabet and number</div>
+                        <div *ngIf="f.password.errors.minlength" class="text-danger"> Password Contain atleast 6 characters</div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+        
+         <!--BUTTONS-->
+         <div class="form-group row">
+             <div class="col-2"></div>
+             <div class="col-4">
+                 <button type="submit" class="btn btn-success">Submit</button>
+             </div>
+             <div class="col-4">
+                 <button type="reset" class="btn btn-danger">Reset</button>
+             </div>
+             <div class="col-2"></div>
+         </div>
+    </form>
+    </div>
+    <div class="col-2"></div>
+    </div>
+    
+    </div>
+    
+    
+    
+    
+    
+    

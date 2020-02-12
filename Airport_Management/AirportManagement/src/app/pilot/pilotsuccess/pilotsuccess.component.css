@@ -1,0 +1,16 @@
+.img-style
+{
+    background-color: white;
+    width:500px;
+    height:500px;
+}
+.success-style
+{
+    margin-top:230px;
+    font-size: 100px;
+}
+.request-style
+{
+    margin-left: 50px;
+    margin-top: 30px;
+}

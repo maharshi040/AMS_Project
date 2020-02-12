@@ -1,0 +1,36 @@
+.table
+  {
+  
+    border-style : solid ;
+    border-color: black;
+  }  
+  .table-style:hover
+  {
+    background-color: white;
+    color:black;
+    border-style : solid ;
+    border-color: black;
+  
+  }
+  .row-style:hover
+  {
+    background-color: black;
+    color:white
+  
+  }
+  .header-style
+  {
+    background-color: black;
+    color:white
+  
+  }
+  .align-style
+  {
+  align-content: center;
+  }
+  .head-style
+  {
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }

@@ -1,0 +1,100 @@
+<app-admin></app-admin>
+<div class="container-fluid con-style">
+<div class="row">
+<div class="col-2"></div>
+<div class="col-8">
+ <h1 class="reg-heading">ADD PLANES</h1>
+<form [formGroup]="addPlaneForm" (ngSubmit)="addPlane()">
+
+    <!-- first name -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="fname"> First Name</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="OwnerFirstName" class="form-control" id="fname"placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.OwnerFirstName.errors }">
+                <div *ngIf="submitted && f.OwnerFirstName.errors" class="is-invalid">
+                    <div *ngIf="f.OwnerFirstName.errors.required" class="text-danger">First Name is required</div>
+                    <div *ngIf="f.OwnerFirstName.errors.pattern" class="text-danger">Name contain only alphabets</div>
+                </div>
+            </div>
+        </div>
+    <!-- last name -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="lname"> Last Name</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="OwnerLastName" class="form-control" id="lname"placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.OwnerLastName.errors }">
+                <div *ngIf="submitted && f.OwnerLastName.errors" class="is-invalid">
+                    <div *ngIf="f.OwnerLastName.errors.required" class="text-danger">Last Name is required</div>
+                    <div *ngIf="f.OwnerLastName.errors.pattern" class="text-danger">Name contain only alphabets</div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- OwnerContactNumber Number -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="OwnerContactNumber">OwnerContactNumber Number</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="OwnerContactNumber" class="form-control" id="OwnerContactNumber"placeholder="OwnerContactNumber" minlength="10" maxlength="10" [ngClass]="{ 'is-invalid': submitted && f.OwnerContactNumber.errors }">
+                <div *ngIf="submitted && f.OwnerContactNumber.errors" class="is-invalid">
+                    <div *ngIf="f.OwnerContactNumber.errors.required" class="text-danger">OwnerContactNumber is required</div>
+                    <div *ngIf="f.OwnerContactNumber.errors.pattern" class="text-danger">OwnerContactNumber contains only Numbers</div>
+                    <div *ngIf="f.OwnerContactNumber.errors.maxlength" class="text-danger">OwnerContactNumber Number Must be 10 Digits</div>
+                    <div *ngIf="f.OwnerContactNumber.errors.minlength" class="text-danger">OwnerContactNumber Number Must be 10 Digits</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OwnerEmail -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="OwnerEmail">OwnerEmail</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="OwnerEmail" class="form-control" id="OwnerEmail"placeholder="E-mail" [ngClass]="{ 'is-invalid': submitted && f.OwnerEmail.errors }">
+                <div *ngIf="submitted && f.OwnerEmail.errors" class="is-invalid">
+                    <div *ngIf="f.OwnerEmail.errors.required" class="text-danger">OwnerEmail is required</div>
+                    <div *ngIf="f.OwnerEmail.errors.email" class="text-danger">Enter Valid E-mail ID</div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Plane Type -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="planeType">Plane Type</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="PlaneType" class="form-control" id="planeType"placeholder="Plane Type" [ngClass]="{ 'is-invalid': submitted && f.PlaneType.errors }">
+                <div *ngIf="submitted && f.PlaneType.errors" class="is-invalid">
+                    <div *ngIf="f.PlaneType.errors.required" class="text-danger">Plane Type is required</div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Plane Capacity -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="planeCapacity">Plane Capacity</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="PlaneCapacity" class="form-control" id="planeCapacity"placeholder="Plane Capacity" [ngClass]="{ 'is-invalid': submitted && f.PlaneCapacity.errors }">
+                <div *ngIf="submitted && f.PlaneCapacity.errors" class="is-invalid">
+                    <div *ngIf="f.PlaneCapacity.errors.required" class="text-danger">Plane Type is required</div>
+                    <div *ngIf="f.PlaneCapacity.errors.pattern" class="text-danger">Plane Capacity contains only Numbers</div>
+                    <div *ngIf="f.PlaneCapacity.errors.maxlength" class="text-danger">Maximum Capacity is 999</div>
+                    </div>
+            </div>
+        </div>
+
+
+        <div class=" form-group row">
+            <div class="col-2"></div>
+                <div class="col-4">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                
+                
+            <div class="col-2"></div>
+        </div>
+        
+</form>
+</div>
+</div>
+<div class="col-2"></div>
+</div>

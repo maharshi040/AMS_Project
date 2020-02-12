@@ -1,0 +1,364 @@
+create database Test;
+use Test;
+drop database Test;
+
+-->Table Manager-->
+create table ams_Manager(
+Manager_ID bigint identity (1,1) NOT NULL PRIMARY KEY,
+First_Name varchar(50) NOT NULL,
+Last_Name varchar(50) NOT NULL,
+Age int NOT NULL,
+Gender varchar(10) NOT NULL,
+DoB date NOT NULL,
+Contact_Number bigint NOT NULL,
+Alt_Contact_Number bigint NOT NULL,
+Email_ID varchar(50) NOT NULL,
+Password varchar(15) NOT NULL,
+status bit
+);
+
+--drop table ams_Manager  manager table droped
+
+insert into ams_Manager(First_Name,Last_Name,Age,Gender,DoB,Contact_Number,Alt_Contact_Number,Email_ID,Password,status) 
+values('Maharshi','R',27,'Male','1995/01/18',7524454905,9904935175,'marsh@gmail.com','marsh123',0),
+('dfsf','R',27,'Male','1995/01/18',7524454905,9904935175,'sand123@gmail.com','iamsandy007',0)
+
+select * from ams_Manager
+
+--delete from ams_Manager 
+
+
+
+
+
+
+
+
+-->Table Admin-->
+create table ams_Admin(
+Admin_ID int identity (1000,1) NOT NULL PRIMARY KEY,
+First_Name varchar(50) NOT NULL,
+Last_Name varchar(50) NOT NULL,
+Age int  NOT NULL,
+Gender varchar(10)  NOT NULL,
+DoB date  NOT NULL,
+Contact_Number bigint  NOT NULL,
+Alt_Contact_Number bigint  NOT NULL,
+Email_ID varchar(50) NOT NULL,
+Password varchar(15) NOT NULL,
+status bit);
+
+--drop table ams_Admin
+
+set identity_insert ams_Admin on
+insert into ams_Admin(Admin_ID,First_Name,Last_Name,Age,Gender,DoB,Contact_Number,Alt_Contact_Number,Email_ID,Password,status)
+values('1002','Manikandan','K',21,'Male','1998/01/19',9524454905,7904935175,'iammanicse@gmail.com','asdf',0),
+('1001','Manikandan','K',21,'Male','1998/01/19',9524454905,7904935175,'iammanicse@gmail.com','asdf',1)
+set identity_insert ams_Admin off
+
+SELECT * FROM ams_Admin
+
+set identity_insert ams_Admin on
+insert into ams_Admin(Admin_ID,First_Name,Last_Name,Age,Gender,DoB,Contact_Number,Alt_Contact_Number,Email_ID,Password,status)
+values('1000','superuser','K',21,'Male','1998/01/19',9524454905,7904935175,'superuser@gmail.com','asdf',1)
+set identity_insert ams_Admin off
+
+delete  from ams_Admin
+
+-->Table Plane-->
+create table ams_Plane( 
+Plane_ID int identity (1,1)  NOT NULL PRIMARY KEY,
+Owner_ID   int  NOT NULL ,
+Owner_First_Name varchar(50)  NOT NULL,
+Owner_Last_Name varchar(50)  NOT NULL,
+Owner_Contact_Number bigint  NOT NULL,
+Owner_Email varchar(50) NOT NULL,
+Plane_Type varchar(10) NOT NULL,
+Plane_Capacity bigint  NOT NULL,
+HangerStatus varchar(50) NOT NULL);
+
+--drop table ams_Plane
+
+insert into ams_Plane(Owner_ID,Owner_First_Name,Owner_Last_Name,Owner_Contact_Number,Owner_Email,Plane_Type,Plane_Capacity,HangerStatus) 
+values(101,'Rakesh','Gangwal',8532189654,'rakesh@gmail.com','Indigo',257,'Not Allotted'),
+(102,'alsks','nsdhj',136546542,'mnbvbc@gmail.com','rttyhy',102,'Allotted')
+
+select * from ams_Plane
+
+
+
+
+
+
+-->Table Pilot-->
+create table ams_Pilot(
+Pilot_ID bigint identity (1,1) NOT NULL PRIMARY KEY,
+License_Number varchar(100)  NOT NULL,
+Address_Line_1 varchar(100) NOT NULL,
+Address_Line_2 varchar(100) NOT NULL,
+City varchar(50) NOT NULL,
+State varchar(50) NOT NULL,
+Zip_Code varchar(10) NOT NULL,
+SSN int NOT NULL,
+Password varchar(15) NOT NULL,
+status bit,
+schedule_status bit);
+
+--drop table ams_Pilot
+
+insert into ams_Pilot(License_Number,Address_Line_1,Address_Line_2,City,State,Zip_Code,SSN,Password,status,schedule_status) 
+values('ABC12345','near to siruseri','cts campus','mahabalipuram','tamilnadu',987651,36985,'pilot1',0,0),
+('mnbv66776','No. 6,Vivegandar Street','Dubai Main Road','Abu Dhabi',' United Arab Emirates',307501,2378,'pilot2',0,0),
+('12345','No. 6,Viv Street',' Main Road','Abu Dhabi',' Uk',307501,2378,'pilot2',0,0)
+
+select * from ams_Pilot
+
+
+
+
+
+-->Table Hanger-->
+create table ams_Hangar(
+Hangar_ID bigint identity (1,1)NOT NULL PRIMARY KEY,
+Manager_ID bigint NOT NULL,
+Manager_Address_Line_1 varchar(100) NOT NULL,
+Manager_Address_Line_2 varchar(100) NOT NULL,
+City varchar(50) NOT NULL,
+State varchar(50) NOT NULL,
+Zip_Code varchar(10) NOT NULL,
+Plane_alloted int, 
+Availability bit);
+
+GO
+ALTER TABLE ams_Hangar  WITH CHECK ADD  CONSTRAINT Manager_ID_fk FOREIGN KEY([Manager_ID])
+REFERENCES ams_Manager ([Manager_ID])
+GO
+ALTER TABLE ams_Hangar CHECK CONSTRAINT Manager_ID_fk
+GO 
+GO
+ALTER TABLE ams_Hangar  WITH CHECK ADD  CONSTRAINT Plane_ID_fk FOREIGN KEY([Plane_alloted])
+REFERENCES ams_Plane ([Plane_ID])
+GO
+ALTER TABLE ams_Hangar CHECK CONSTRAINT Plane_ID_fk
+GO
+--drop table ams_Hangar
+
+insert into ams_Hangar(Manager_ID,Manager_Address_Line_1,Manager_Address_Line_2,City,State,Zip_Code,Availability)
+values(1,'near to seruseri','cts campus','mahabalipuram','tamilnadu',987651,1),
+(2,'ongole ','near to bus stand','hyd','andhrapradesh',123456,0)
+
+select * from ams_Hangar
+
+delete from ams_Hangar
+
+
+-->Table Hanger status-->
+create table ams_Hangar_Status(
+Hangar_Status_Id int identity (1,1) NOT NULL PRIMARY KEY,
+Hangar_ID bigint ,
+Manager_ID bigint ,
+Status varchar(50) NOT NULL,
+Occupancy_From_Date date NOT NULL,
+Occupancy_till_date date NOT NULL,
+Available_From_Date date NOT NULL,
+Available_Till_Date date NOT NULL);
+
+
+GO
+ALTER TABLE ams_Hangar_Status  WITH CHECK ADD  CONSTRAINT Manager_fk FOREIGN KEY([Manager_ID])
+REFERENCES ams_Manager ([Manager_ID])
+GO
+ALTER TABLE ams_Hangar_Status CHECK CONSTRAINT Manager_fk
+GO
+GO
+ALTER TABLE ams_Hangar_Status  WITH CHECK ADD  CONSTRAINT Hangar_fk FOREIGN KEY([Hangar_ID])
+REFERENCES ams_Hangar ([Hangar_ID])
+GO
+ALTER TABLE ams_Hangar_Status CHECK CONSTRAINT Hangar_fk
+GO
+--drop table ams_Hangar_Status
+
+insert into ams_Hangar_Status( Hangar_ID,Manager_ID,Status,Occupancy_From_Date,Occupancy_till_date,Available_From_Date,Available_Till_Date)
+values(3,1,1,'2000/01/19','2010/04/11','2016/12/01','2019/09/22'),
+(2,2,0,'2016/11/09','2011/06/13','2009/03/10','2012/06/10')
+
+
+select * from ams_Hangar_Status
+delete from ams_Hangar_Status
+
+
+
+-->Table Feedback-->
+create table ams_Feedback(Assessment_ID int  NOT NULL PRIMARY KEY,
+Question_1 varchar(200) NOT NULL,
+Question_2 varchar(200) NOT NULL,
+Question_3 varchar(200) NOT NULL,
+Question_4 varchar(200) NOT NULL,
+Question_5 varchar(200) NOT NULL,
+Question_6 varchar(200) NOT NULL,
+Question_7 varchar(200) NOT NULL,
+Question_8 varchar(200) NOT NULL,
+Question_9 varchar(200) NOT NULL,
+Question_10 varchar(200) NOT NULL);
+
+drop table ams_Feedback
+
+-->Table User Feedback-->
+create table ams_User_Feedback(
+User_ID bigint identity (1,1) NOT NULL PRIMARY KEY,
+FirstName varchar(200) NOT NULL,
+LastName varchar(200) NOT NULL,
+comments varchar(200) NOT NULL,
+email varchar(200) NOT NULL);
+
+drop table ams_User_Feedback
+
+select * from ams_User_Feedback
+
+insert into ams_User_Feedback(FirstName,LastName,comments,email)
+values('SamiRaja','Queen','Request Approval','sami@gmail.com')
+
+
+-->Table Work_schedule-->
+create table ams_Work_schedule(
+Schedule_Id int identity (1,1)  NOT NULL PRIMARY KEY,
+Pilot_Id bigint,
+Pilot_Name varchar(50) NOT NULL,
+Daily_schedule varchar(50) NOT NULL,
+Weekly_schedule varchar(50) NOT NULL,
+Monthly_schedule varchar(50)NOT NULL,
+Reschedule_request bit);
+
+
+GO
+ALTER TABLE ams_Work_schedule  WITH CHECK ADD  CONSTRAINT Pilot_Id_FK FOREIGN KEY(Pilot_Id)
+REFERENCES ams_Pilot (Pilot_ID)
+GO
+ALTER TABLE ams_Work_schedule CHECK CONSTRAINT Pilot_Id_FK
+GO
+
+--drop table ams_Work_schedule
+
+insert into ams_Work_schedule(Pilot_Id,Pilot_Name,Daily_schedule,Weekly_schedule,Monthly_schedule,Reschedule_request)
+values(1,'SamiRaja',' London Heathrow– Las Vegas','Round Trip Las Vegas– London Heathrow','Las Vegas – London Heathrow Again and Again',0),
+(2,'mallika',' London Heathrow– Las Vegas','Round Trip Las Vegas– London Heathrow','Las Vegas – London Heathrow Again and Again',1)
+
+
+select * from ams_Work_schedule
+
+
+
+/**********/
+
+
+-->Table flight_plan-->
+create table ams_flight_plan(
+Flight_plan_Id int identity (1,1)  NOT NULL PRIMARY KEY,
+Flight_Id  int ,
+Departure_location varchar(50) NOT NULL,
+Waypoints varchar(50) NOT NULL, 
+Estimated_time_of_arrival varchar(50) NOT NULL,
+Destination_location varchar(50) NOT NULL,
+Alternate_airports varchar(50) NOT NULL,
+Aircraft_information varchar(50) NOT NULL,
+Pilots_information varchar(50) NOT NULL,
+Status bit );
+
+GO
+ALTER TABLE ams_flight_plan  WITH CHECK ADD  CONSTRAINT Flight_Id_FK FOREIGN KEY(Flight_Id)
+REFERENCES ams_Plane (Plane_ID)
+GO
+ALTER TABLE ams_flight_plan CHECK CONSTRAINT Flight_Id_FK
+GO
+
+
+--drop table ams_flight_plan
+
+
+/*****ams_Flight_plan*****/
+
+insert into ams_flight_plan(Flight_Id,Departure_location,Waypoints,Estimated_time_of_arrival,Destination_location,Alternate_airports,Aircraft_information,Pilots_information, status)
+values(1,'USA','Quarter','28 hrs','Chennai','Chennai Airport','Ps144','Manikandan',0);
+
+select * from ams_flight_plan
+
+delete from ams_Admin where Admin_ID=1004
+update ams_Admin set rejection_bit = 0,rejection_reason=NULL,status=0 where Admin_ID=1005
+update ams_Manager set status = 0 where Manager_ID=9
+update ams_Plane set HangerStatus='Not Allotted' where Plane_ID=21
+update ams_Hangar set Availability=1
+update ams_Pilot set status=0
+update ams_Manager set status =0
+
+select * from ams_Plane
+select * from ams_Hangar
+select * from ams_Manager
+select * from ams_Hangar_Status
+
+select * from ams_Pilot
+select * from ams_Admin
+select * from ams_Work_schedule
+select * from ams_flight_plan
+select * from ams_User_Feedback
+
+
+ delete  from ams_Hangar
+
+
+
+ ALTER TABLE ams_Work_schedule  DROP COLUMN pilot_Name
+
+ /* dotnet ef dbcontext scaffold "server=PCIN480249;database=Test;trusted_connection=yes" Microsoft.EntityFrameworkCore.SqlServer -o Models -f  */
+
+
+
+
+
+ -->Table Admin-->
+create table ams_Admin(
+Admin_ID int identity (1000,1) NOT NULL PRIMARY KEY,
+First_Name varchar(50) NOT NULL,
+Last_Name varchar(50) NOT NULL,
+Age int  NOT NULL,
+Gender varchar(10)  NOT NULL,
+DoB date  NOT NULL,
+Contact_Number bigint  NOT NULL,
+Alt_Contact_Number bigint  NOT NULL,
+Email_ID varchar(50) NOT NULL,
+Password varchar(15) NOT NULL,
+status bit,
+rejection_bit bit,
+rejection_reason varchar(50));
+
+-->Table Manager-->
+create table ams_Manager(
+Manager_ID bigint identity (1,1) NOT NULL PRIMARY KEY,
+First_Name varchar(50) NOT NULL,
+Last_Name varchar(50) NOT NULL,
+Age int NOT NULL,
+Gender varchar(10) NOT NULL,
+DoB date NOT NULL,
+Contact_Number bigint NOT NULL,
+Alt_Contact_Number bigint NOT NULL,
+Email_ID varchar(50) NOT NULL,
+Password varchar(15) NOT NULL,
+status bit,
+rejection_bit bit,
+rejection_reason varchar(50)
+);
+
+-->Table Pilot-->
+create table ams_Pilot(
+Pilot_ID bigint identity (1,1) NOT NULL PRIMARY KEY,
+License_Number varchar(100)  NOT NULL,
+Address_Line_1 varchar(100) NOT NULL,
+Address_Line_2 varchar(100) NOT NULL,
+City varchar(50) NOT NULL,
+State varchar(50) NOT NULL,
+Zip_Code varchar(10) NOT NULL,
+SSN int NOT NULL,
+Password varchar(15) NOT NULL,
+status bit,
+schedule_status bit,
+rejection_bit bit,
+rejection_status varchar(50));

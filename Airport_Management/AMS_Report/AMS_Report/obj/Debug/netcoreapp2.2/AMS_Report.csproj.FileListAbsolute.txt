@@ -1,0 +1,14 @@
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\bin\Debug\netcoreapp2.2\AMS_Report.deps.json
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\bin\Debug\netcoreapp2.2\AMS_Report.runtimeconfig.json
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\bin\Debug\netcoreapp2.2\AMS_Report.runtimeconfig.dev.json
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\bin\Debug\netcoreapp2.2\AMS_Report.dll
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.csproj.CoreCompileInputs.cache
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.RazorAssemblyInfo.cache
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.RazorAssemblyInfo.cs
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.AssemblyInfoInputs.cache
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.AssemblyInfo.cs
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.RazorTargetAssemblyInfo.cache
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.dll
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.pdb
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\bin\Debug\netcoreapp2.2\AMS_Report.pdb
+C:\Users\807894\Airport_Management\AMS_Report\AMS_Report\obj\Debug\netcoreapp2.2\AMS_Report.csprojAssemblyReference.cache

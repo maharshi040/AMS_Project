@@ -1,0 +1,78 @@
+
+<!-- <div class="row">
+<div *ngFor="let pilot of pilotworkschedule[0]"> -->
+
+<!-- <div class="card mt-5 mb-5 ml-5" style="width: 18rem;">
+    <img class="card-img-top  mr-2 " src="https://s.marketwatch.com/public/resources/images/MW-HE536_airpla_ZH_20190225131547.jpg" alt="Card image cap">
+    <div class="card-body">
+
+      <h5 class="card-title">HKJHL</h5>
+      <a [routerLink]="['/pilotworkschedule',pilotworkschedule.pilotId]" class="btn btn-primary">View More</a>
+    </div>
+  </div> -->
+<app-pilot></app-pilot>
+<div class="row mt-4">
+   
+    <div class="col-2"></div>
+    <div class="col-8">
+            <h2 class="head-style">Pilot Schedule</h2>
+        <table class="table">
+            <tbody>
+                <tr class="header-style">
+                    <td>Pilot ID</td>
+                    <!-- <td>Pilot Name</td> -->
+                    <td>Daily schedule </td>
+                    <td>Weekly Schedule</td>
+                    <td>monthly Schedule</td>
+                </tr>
+                <tr class="row-style" *ngFor= "let pilot of pilotworkschedule">
+                    <td>{{pilot.pilotId}}</td>
+                    <!-- <td>{{pilot.pilotName}}</td> -->
+                    <td>{{pilot.dailySchedule}}</td>
+                    <td>{{pilot.weeklySchedule}}</td>
+    
+                      <td>  
+                            {{pilot.monthlySchedule}}
+                    </td>   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-2"></div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+<!-- 
+        <div *ngFor="let pilot of pilotworkschedule">
+        <div class="row">
+            <div class="col-md-2 mt-2">
+                <p>{{pilot.pilotId}}</p>
+            </div>
+            <div class="col-md-3 mt-2">
+                <p>{{pilot.pilotName}}</p>
+            </div>
+            <div class="col-md-2 mt-2">
+                <p>{{pilot.dailySchedule}}</p>
+            </div>
+            <div class="col-md-2 mt-2">
+                <p>{{pilot.weeklySchedule}}</p>
+            </div>
+            <div class="col-md-2 mt-2">
+                    <p>{{pilot.monthlySchedule}}</p>
+                </div>
+                     
+        </div>
+
+        
+</div> -->
+
+
+

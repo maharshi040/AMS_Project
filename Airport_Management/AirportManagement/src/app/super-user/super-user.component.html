@@ -1,0 +1,180 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">      
+        <a class="navbar-brand" [routerLink]="['superuser']"><i class="material-icons planeicon">
+            flight_takeoff
+            </i>GoAir</a>
+            <ul class="navbar-nav ml-auto ">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/home">Logout</a>
+              </li>
+              <li>
+
+              </li>
+            </ul>
+    </nav>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+    <h2 class="head-style">Requests</h2>
+    <div *ngIf = "isAdmin == true">
+    <table class="table">
+        <tbody>
+            <tr class="header-style">
+                <td>Admin ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+            <tr class="row-style" *ngFor="let admin of AdminRegistrationRequests[0]">
+                <td>{{admin.adminId}}</td>
+                <td>{{admin.firstName}}</td>
+                <td>{{admin.lastName}}</td>
+                <td>{{admin.emailId}}</td>
+
+                  <td>  
+                        <button type="button"  data-toggle="modal" data-target="#approve" (click)="adminApprove(admin.emailId)" class="btn-property"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGtImK_VokjsZ6jX2NQGPq89nBRv0ql_WEbeo2iLTepTAwhJE7g&s" height="30px"></button>
+                        <button type="button"  (click)="adminReject(admin.emailId)"class="btn-property"><img src="https://cdn.clipart.email/cec367961e3e24f6413107593767db8c_wrong-free-vector-download-44-free-vector-for-commercial-use-_368-368.jpeg" height="30px"></button>
+                </td>   
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<div class="col-2"></div>
+</div>
+
+<!-- <div *ngIf="adminStatus">
+    <form [formGroup]="rejectAdmin">
+        <input type="text"   formControlName="Admincomments" class="form-control" id="rejection_reason" placeholder="Enter rejection_reason"  >
+        <div class="col-4">
+            <button type="submit" data-toggle="modal" data-target="#reject" (click)="adminRejectButtonClick()" class="btn btn-success">Submit</button>
+     
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+    </form>
+    </div> -->
+
+    <div *ngIf="adminStatus">
+        <form [formGroup]="rejectAdmin">
+        <div class="row mt-4">
+          <div class="col-4"></div>
+          <div class="col-4">
+              <input type="text"   formControlName="Admincomments" class="form-control" id="rejection_reason" placeholder="Enter rejection_reason"  >
+            </div>
+            <div class="col-4"></div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-4">
+      
+            </div>
+            <div class="col-2">
+                <button type="submit" data-toggle="modal" data-target="#reject" (click)="adminRejectButtonClick()" class="btn btn-success">Submit</button>
+              </div>
+            <div class="col-2">
+                <button type="reset" class="btn btn-danger">Reset</button>
+              </div>
+            <div class="col-4">
+      
+            </div>
+          </div>
+        </form>
+      </div>
+      
+
+ <div class="modal" id="approve">
+        <div class="modal-dialog">
+          <div class="modal-content"> 
+          
+            <!-- Modal Header -->
+           <div class="modal-header">
+              <h4 class="modal-title">APPROVED </h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div> 
+            
+            <!-- Modal body -->
+           <div class="modal-body">
+              Success
+            </div> 
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+            
+          </div>
+        </div>
+      </div> 
+
+     <div class="modal" id="reject">
+            <div class="modal-dialog">
+              <div class="modal-content"> 
+              
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title text-danger">REJECTED </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                 <div class="modal-body text-danger">
+                  Success
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                
+              </div>
+            </div>
+          </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <div *ngIf = "isAdmin == true">
+
+        <div class="row mt-4 ml-4">
+                <div class="col-md-2 mt-2"><b>Admin Id</b></div>
+                <div class="col-md-3 mt-2"><b>First Name</b></div>
+                <div class="col-md-2 mt-2"><b>Last Name</b></div>
+                <div class="col-md-2 mt-2"><b>Email Id</b></div>
+                <div class="col-md-3"><b>Status</b></div>               
+            </div>
+
+ <div *ngFor="let admin of AdminRegistrationRequests[0]">
+     <div class="row mt-4 ml-4">
+         <div class="col-md-2 mt-2">
+             <p>{{admin.adminId}}</p>
+         </div>
+         <div class="col-md-3 mt-2">
+             <p>{{admin.firstName}}</p>
+         </div>
+         <div class="col-md-2 mt-2">
+             <p>{{admin.lastName}}</p>
+         </div>
+         <div class="col-md-2 mt-2">
+             <p>{{admin.emailId}}</p>
+         </div>
+         <div class="col-md-3">
+             <button type="button" (click)="adminApprove(admin.emailId)" class="btn-property"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGtImK_VokjsZ6jX2NQGPq89nBRv0ql_WEbeo2iLTepTAwhJE7g&s" height="30px"></button>
+             <button type="button" (click)="adminReject(admin.emailId)"class="btn-property"><img src="https://cdn.clipart.email/cec367961e3e24f6413107593767db8c_wrong-free-vector-download-44-free-vector-for-commercial-use-_368-368.jpeg" height="30px"></button>
+         </div>               
+     </div>
+ </div>
+ 
+ </div> -->

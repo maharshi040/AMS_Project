@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AirportManagement\\src",
+    "\\AirportManagement\\src\\app",
+    "\\AirportManagement\\src\\app\\Admin",
+    "\\AirportManagement\\src\\app\\Admin\\registration",
+    "\\AirportManagement\\src\\app\\manager",
+    "\\AirportManagement\\src\\app\\manager\\managerregistration",
+    "\\AirportManagement\\src\\app\\pilot",
+    "\\AMS_Report"
+  ],
+  "SelectedNode": "\\AMS_Report\\AMS_Report.sln",
+  "PreviewInSolutionExplorer": false
+}

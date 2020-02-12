@@ -1,0 +1,145 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">      
+        <a class="navbar-brand" [routerLink]="['/pilot']"><i class="material-icons planeicon">
+            flight_takeoff
+            </i>GoAir
+        </a>
+    </nav>
+    
+    <div class="container-fluid con-style">
+        <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+         <h1 class="reg-heading">Flight Plan</h1>
+        <form [formGroup]="addFlightPlanForm" (ngSubmit)="addFlightPlan()">
+
+            
+        <!-- Plane Id -->
+        <!-- <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="PlaneId"> Plane Id</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="PlaneId" class="form-control" id="PlaneId"placeholder="Plane Id" [ngClass]="{ 'is-invalid': submitted && f.PlaneId.errors }">
+                <div *ngIf="submitted && f.PlaneId.errors" class="is-invalid">
+                    <div *ngIf="f.PlaneId.errors.required" class="text-danger">Plane Id is required</div>
+                    <div *ngIf="f.PlaneId.errors.pattern" class="text-danger">PlaneId contain only alphabets</div> -->
+                <!-- </div>
+            </div>
+        </div>  -->
+
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="lname">Plane Id</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <!-- <input type="text" formControlName="PilotName" class="form-control" id="pname"placeholder="Pilot Name" [ngClass]="{ 'is-invalid': submitted && f.PilotName.errors }"> -->
+                
+                <select class="custom-select" formControlName="flightId">
+                        <option value="" disabled>Choose the Planes</option>
+                        <option *ngFor="let plane of PlanesList">{{plane.planeId}}</option>
+               </select>
+                
+                <div *ngIf="submitted && f.flightId.errors" class="is-invalid">
+                    <div *ngIf="f.flightId.errors.required" class="text-danger">Plane Id is required</div>
+                    <div *ngIf="f.flightId.errors.pattern" class="text-danger">Id contain only Numbers</div>
+                </div>
+            </div>
+        </div>
+            <!-- Departure Location -->
+                <div class="form-group row">
+                        <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="departure"> Departure Location</label>
+                    <div class="col-sm-10 col-lg-10-col-md-10">
+                        <input type="text" formControlName="DepartureLocation" class="form-control" id="departure"placeholder="Departure Location" [ngClass]="{ 'is-invalid': submitted && f.DepartureLocation.errors }">
+                        <div *ngIf="submitted && f.DepartureLocation.errors" class="is-invalid">
+                            <div *ngIf="f.DepartureLocation.errors.required" class="text-danger">Departure Location is required</div>
+                            <div *ngIf="f.DepartureLocation.errors.pattern" class="text-danger">Departure Location contain only alphabets</div>
+                        </div>
+                    </div>
+                </div>
+            <!-- Way Points  -->
+                <div class="form-group row">
+                        <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="destination"> Waypoints </label>
+                    <div class="col-sm-10 col-lg-10-col-md-10">
+                        <input type="text" formControlName="Waypoints" class="form-control" id="destination"placeholder="Waypoints " [ngClass]="{ 'is-invalid': submitted && f.Waypoints.errors }">
+                        <div *ngIf="submitted && f.Waypoints.errors" class="is-invalid">
+                            <div *ngIf="f.Waypoints.errors.required" class="text-danger">WayPoint is required</div>
+                            <div *ngIf="f.Waypoints.errors.pattern" class="text-danger">Waypoint contain only alphabets</div>
+                        </div>
+                    </div>
+                </div>
+              
+                <!-- Estimated Time of Arrival  -->
+                <div class="form-group row">
+                        <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="EstimatedTimeOfArrival">Estimated Time </label>
+                    <div class="col-sm-10 col-lg-10-col-md-10">
+                        <input type="text" formControlName="EstimatedTimeOfArrival" class="form-control" id="EstimatedTimeOfArrival"placeholder="Hours" [ngClass]="{ 'is-invalid': submitted && f.EstimatedTimeOfArrival.errors }">
+                        <div *ngIf="submitted && f.EstimatedTimeOfArrival.errors" class="is-invalid">
+                            <div *ngIf="f.EstimatedTimeOfArrival.errors.required" class="text-danger">EstimatedTimeOfArrival is required</div>
+                            <div *ngIf="f.EstimatedTimeOfArrival.errors.pattern" class="text-danger">EstimatedTimeOfArrival contains only Numbers</div>
+                            
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Destination Location -->
+                <div class="form-group row">
+                        <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="DestinationLocation">Destination Location</label>
+                    <div class="col-sm-10 col-lg-10-col-md-10">
+                        <input type="text" formControlName="DestinationLocation" class="form-control" id="DestinationLocation"placeholder="Destination Location" [ngClass]="{ 'is-invalid': submitted && f.DestinationLocation.errors }">
+                        <div *ngIf="submitted && f.DestinationLocation.errors" class="is-invalid">
+                            <div *ngIf="f.DestinationLocation.errors.required" class="text-danger">Destination Location is required</div>
+                            <div *ngIf="f.DestinationLocation.errors.pattern" class="text-danger">Destination Location contains only alphabets</div>
+                            </div>
+                    </div>
+                </div>
+        
+                <!-- Alternate Airports  -->
+                <div class="form-group row">
+                        <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="AlternateAirports">Alternate Airport </label>
+                    <div class="col-sm-10 col-lg-10-col-md-10">
+                        <input type="text" formControlName="AlternateAirports" class="form-control" id="AlternateAirports"placeholder="Alternate Airport" [ngClass]="{ 'is-invalid': submitted && f.AlternateAirports.errors }">
+                        <div *ngIf="submitted && f.AlternateAirports.errors" class="is-invalid">
+                            <div *ngIf="f.AlternateAirports.errors.required" class="text-danger">Plane Type is required</div>
+                            <div *ngIf="f.AlternateAirports.errors.email" class="text-danger">Alternate Airport contains only alphabets</div>
+                            </div>
+                    </div>
+                </div>
+        
+                <!-- Aircraft Information  -->
+                <div class="form-group row">
+                        <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="AircraftInformation">Aircraft Information </label>
+                    <div class="col-sm-10 col-lg-10-col-md-10">
+                        <input type="text" formControlName="AircraftInformation" class="form-control" id="AircraftInformation"placeholder="Aircraft's  Information " [ngClass]="{ 'is-invalid': submitted && f.AircraftInformation.errors }">
+                        <div *ngIf="submitted && f.AircraftInformation.errors" class="is-invalid">
+                            <div *ngIf="f.AircraftInformation.errors.required" class="text-danger">Aircraft Information  is required</div>
+                           
+                            </div>
+                    </div>
+                </div>
+                <!-- Pilot Information  -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="pilotinfo">Pilot Information</label>
+                <div class="col-sm-10 col-lg-10-col-md-10">
+                    <input type="text" formControlName="PilotsInformation" class="form-control" id="pilotinfo" placeholder="pilot information" [ngClass]="{ 'is-invalid': submitted && f.PilotsInformation.errors }">
+                    <div *ngIf="submitted && f.PilotsInformation.errors" class="is-invalid">
+                        <div *ngIf="f.PilotsInformation.errors.required" class="text-danger">pilot information is required</div>      
+                        </div>
+                </div>
+            </div>
+        
+        
+                <div class=" form-group row">
+                    <div class="col-2"></div>
+                        <div class="col-4">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                            <div class="col-4">
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        
+                        
+                    <div class="col-2"></div>
+                </div>
+                
+        </form>
+        </div>
+        </div>
+        <div class="col-2"></div>
+        </div>
+        

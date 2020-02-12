@@ -1,0 +1,118 @@
+<app-admin></app-admin>
+<div class="container-fluid con-style">
+<div class="row">
+<div class="col-2"></div>
+<div class="col-8">
+<h1 class="reg-heading">Add Hanagar</h1>
+<form [formGroup]="addHangarForm" (ngSubmit)="addHangar()">
+
+    <!-- Manager Id -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="managerID"> Manager Name</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <!-- <input type="text" formControlName="ManagerId" class="form-control" id="managerID"placeholder="Manager ID" [ngClass]="{ 'is-invalid': submitted && f.ManagerId.errors }"> -->
+                <select class="custom-select" formControlName="ManagerId">
+                  <option value="" disabled>Choose the Manager</option>
+                  <option *ngFor="let manager of Managers" [ngValue]="manager.managerId">{{manager.firstName}}</option>
+               </select>
+                <div *ngIf="submitted && f.ManagerId.errors" class="is-invalid">
+                    <div *ngIf="f.ManagerId.errors.required" class="text-danger">First Name is required</div>
+                    <div *ngIf="f.ManagerId.errors.pattern" class="text-danger">Manager ID contain only numbers</div>
+                </div>
+            </div>
+        </div>
+    <!-- Manager Address 1-->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="Address1">Manager Address1</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="ManagerAddressLine1" class="form-control" id="Address1"placeholder="Manager Address 1" [ngClass]="{ 'is-invalid': submitted && f.ManagerAddressLine1.errors }">
+                <div *ngIf="submitted && f.ManagerAddressLine1.errors" class="is-invalid">
+                    <div *ngIf="f.ManagerAddressLine1.errors.required" class="text-danger">Address is required</div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Manager Address 2-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="Address2">Manager Address2</label>
+        <div class="col-sm-10 col-lg-10-col-md-10">
+            <input type="text" formControlName="ManagerAddressLine2" class="form-control" id="Address1"placeholder="Manager Address 2" [ngClass]="{ 'is-invalid': submitted && f.ManagerAddressLine2.errors }">
+            <div *ngIf="submitted && f.ManagerAddressLine2.errors" class="is-invalid">
+                <div *ngIf="f.ManagerAddressLine2.errors.required" class="text-danger">Address is required</div>            
+            </div>
+        </div>
+    </div>
+      
+        <!-- city -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="City">City</label>
+            <div class="col-sm-4 col-lg-4-col-md-4">
+                <input type="text" formControlName="City" class="form-control" id="OwnerContactNumber"placeholder="City"  [ngClass]="{ 'is-invalid': submitted && f.City.errors }">
+                <div *ngIf="submitted && f.City.errors" class="is-invalid">
+                    <div *ngIf="f.City.errors.required" class="text-danger">City is required</div>
+                    <div *ngIf="f.City.errors.pattern" class="text-danger">City contains Alphabets</div>
+                    
+                </div>
+            </div>
+        
+
+        <!-- State -->
+       
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="State">State</label>
+            <div class="col-sm-4 col-lg-4-col-md-4">
+                <input type="text" formControlName="State" class="form-control" id="State"placeholder="State" [ngClass]="{ 'is-invalid': submitted && f.State.errors }">
+                <div *ngIf="submitted && f.State.errors" class="is-invalid">
+                    <div *ngIf="f.State.errors.required" class="text-danger">State is required</div>
+                    <div *ngIf="f.State.errors.email" class="text-danger">State contains Alphabets</div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Zip Code -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="ZipCode">Zip Code</label>
+            <div class="col-sm-4 col-lg-4-col-md-4">
+                <input type="text" formControlName="ZipCode" class="form-control" id="ZipCode"placeholder="ZipCode" minlength="6" maxlength="6" [ngClass]="{ 'is-invalid': submitted && f.ZipCode.errors }">
+                <div *ngIf="submitted && f.ZipCode.errors" class="is-invalid">
+                    <div *ngIf="f.ZipCode.errors.required" class="text-danger">ZipCode  is required</div>
+                    <div *ngIf="f.ZipCode.errors.patter" class="text-danger">Zip Code contains only Numbers</div>
+                    <div *ngIf="f.ZipCode.errors.minlength">Zip contains 6 numbers</div>
+                    </div>
+            </div>
+        
+
+        <!-- Availability-->
+        
+            <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="Select">Status</label>
+            <div class="col-sm-4 col-lg-4 col-md-4 ">
+                    <select formControlName="Availability" class="form-control"[ngClass]="{'is-invalid':submitted && f.Availability.errors}">
+                            <option value="">Select</option>
+                            <option [ngValue]="0">Unavailable</option>
+                            <option [ngValue]="1">Available</option>
+                    </select>
+                        <div *ngIf="submitted && f.Availability.errors" class="is-invalid">
+                                <div *ngIf="f.gender.Availability.required"class="text-danger">Status is required</div>
+                        </div>
+            </div>    
+        </div>
+        
+
+        <div class=" form-group row">
+            <div class="col-2"></div>
+                <div class="col-4">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                
+                
+            <div class="col-2"></div>
+        </div>
+        
+</form>
+</div>
+</div>
+<div class="col-2"></div>
+</div>

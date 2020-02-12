@@ -1,0 +1,113 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">      
+        <a class="navbar-brand" [routerLink]="['']"><i class="material-icons planeicon">
+            flight_takeoff
+            </i>GoAir</a>
+</nav>
+
+<!-- login body -->
+
+<div class="container login-container">
+        <form class="forms reg-form" [formGroup]="adminLoginForm" (ngSubmit)="onAdminSubmit()" *ngIf="id=='admin'">
+                <div class="alert alert-danger" *ngIf="show=='Admin Disapproved'">
+                        <p>Admin Disapproved</p>
+                        <p>Rejection Reason : {{comment}}</p>
+                </div>
+                <div class="alert alert-danger" *ngIf="show=='not matched'">
+                        <p>Invalid Username/password</p>
+                </div>
+            <div class="row">
+                <div class="col-6 login-form-1">
+                    <h3>{{id}} Login Form</h3>
+                    
+                        <div class="form-group">
+                            <input type="text"  formControlName="emailid" class="form-control" placeholder="Your Email *" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" formControlName="password" class="form-control" placeholder="Your Password *" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit loginbtn" value="Login"/>
+                        </div>
+                        <div class="form-group">
+                            <a  class="btnForgetPwd text-white">Forget Password?</a>
+                        </div>
+                        <div class="form-group">
+                                <a [routerLink]="['/adminRegistration']" class="btnForgetPwd text-white">New user?</a>
+                            </div>
+                    
+                </div>
+        </div>
+        </form>
+        <form class="forms reg-form" [formGroup]="managerLoginForm" (ngSubmit)="onManagerSubmit()" *ngIf="id=='manager'">
+                <div class="alert alert-danger" *ngIf="show=='Admin Disapproved'">
+                        <p>Admin Disapproved</p>
+                        <p>Rejection Reason : {{comment}}</p>
+                </div>
+                <div class="alert alert-danger" *ngIf="show=='not matched'">
+                        <p>Invalid Username/password</p>
+                </div>
+            <div class="row">
+                  
+                <div class="col-6 login-form-1">
+                    <h3>{{id}} Login Form</h3>
+                    
+                        <div class="form-group">
+                            <input type="text"  formControlName="emailid" class="form-control" placeholder="Your Email *" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" formControlName="password" class="form-control" placeholder="Your Password *" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit loginbtn" value="Login"/>
+                        </div>
+                        <div class="form-group">
+                            <a  class="btnForgetPwd text-white">Forget Password?</a>
+                        </div>
+                        <div class="form-group">
+                                <a [routerLink]="['/managerRegistration']" class="btnForgetPwd text-white">New user?</a>
+                            </div>
+                    
+                </div>
+        </div>
+        </form>
+        <form class="forms reg-form" [formGroup]="pilotLoginForm" (ngSubmit)="onPilotSubmit()" *ngIf="id=='pilot'">
+                <div class="alert alert-danger" *ngIf="show=='Admin Disapproved'">
+                        <p>Admin Disapproved</p>
+                        <p>Rejection Reason : {{comment}}</p>
+                </div>
+                <div class="alert alert-danger" *ngIf="show=='not matched'">
+                        <p>Invalid Username/password</p>
+                </div>
+            <div class="row">
+                
+                <div class="col-6 login-form-1">
+                    <h3>{{id}} Login Form</h3>
+                    
+                        <div class="form-group">
+                            <input type="text"  formControlName="Licensenumber" class="form-control" placeholder="License Number" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" formControlName="password" class="form-control" placeholder="Your Password *" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit loginbtn" value="Login"/>
+                        </div>
+                        <div class="form-group">
+                            <a  class="btnForgetPwd text-white">Forget Password?</a>
+                        </div>
+                        <div class="form-group">
+                                <a [routerLink]="['/pilotRegistration']" class="btnForgetPwd text-white">New user?</a>
+                            </div>
+                    
+                </div>
+        </div>
+        </form>
+</div>
+
+

@@ -1,0 +1,18 @@
+.txtwhite{
+    color: white;
+}
+.planeicon{
+    vertical-align: middle;
+}
+.navbar a:hover
+{
+    background-color: white;
+    color:black;
+}
+ .con-style
+{
+   background-image: url('https://images.unsplash.com/photo-1530469353049-18df0403f42b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1340&q=80');
+   background-size: cover;
+   background-repeat: no-repeat;
+   
+} 

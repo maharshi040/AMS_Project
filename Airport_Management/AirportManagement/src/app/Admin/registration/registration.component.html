@@ -1,0 +1,154 @@
+<!-- navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">      
+    <a class="navbar-brand" [routerLink]="['']"><i class="material-icons planeicon">
+        flight_takeoff
+        </i>GoAir
+    </a>
+    <a class="navbar-link ml-auto text-white" [routerLink]="['/login',roleAdmin]">Login</a>
+</nav>
+
+<div class="container-fluid con-style">
+<div class="row">
+<div class="col-2"></div>
+<div class="col-8">
+
+<h2 class="reg-heading">Admin Registration</h2>
+<form class="forms reg-form" [formGroup]="adminRegisterForm" (ngSubmit)="onAdminRegSubmit()">
+
+    <!--FIRST NAME-->
+    <div class="form-group row">
+        <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="fname"> First Name</label>
+        <div class="col-sm-10 col-lg-10-col-md-10">
+          <input type="text" formControlName="firstName" class="form-control" id="fname"placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+          <div *ngIf="submitted && (f.firstName.errors )" class="is-invalid">
+                <div *ngIf="f.firstName.errors.required" class="text-danger">First Name is required</div>
+                <div *ngIf="f.firstName.errors.pattern" class="text-danger">Name contain only alphabets</div>
+             </div>
+        </div>
+      </div>
+      
+      <!--LAST NAME-->
+      <div class="form-group row">
+            <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="lname">Last Name</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                 <input type="text"  formControlName="lastName"  class="form-control" placeholder="Last Name" id="lname" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" >
+                <div *ngIf="submitted && f.lastName.errors" class="is-invalid">
+                    <div *ngIf="f.lastName.errors.required" class="text-danger">Last Name is required</div>
+                    <div *ngIf="f.lastName.errors.pattern" class="text-danger">Name contain only alphabets</div>
+                 </div>
+            </div>
+        </div>
+  <!--doB-->
+  <div class="form-group row">
+    <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="doB">Date Of Birth</label>
+    <div class="col-sm-10 col-lg-10-col-md-10">
+        <!-- <input type="date"formControlName="doB" class="form-control" placeholder="MM/DD/YYYY" id="doB"[ngClass]="{'is-invalid':submitted && f.doB.errors}" > -->
+        
+        <input type="date" formControlName="doB" (input)= "getAge(adminRegisterForm.get('doB').value)" class="form-control" placeholder="MM/DD/YYYY" id="dob"[ngClass]="{'is-invalid':submitted && f.doB.errors}" >
+
+
+          <div *ngIf="submitted && f.doB.errors" class="is-invalid">
+                  <div *ngIf="f.doB.errors.required" class="text-danger">Date of birth is required</div>
+          </div>
+    </div>
+   
+</div>
+        <!--AGE-->
+      <div class="form-group row">
+            <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="age">Age</label>
+            <div class="col-sm-4">
+                <input type="text" formControlName="age" class="form-control" placeholder="Age" id="age"  [ngClass]="{ 'is-invalid': submitted && f.age.errors }" >
+                <div *ngIf="submitted && f.age.errors" class="is-invalid">
+                        <div *ngIf="f.age.errors.required"class="text-danger">Age is required</div>
+                        <div *ngIf="f.age.errors.pattern" class="text-danger">Age contain only numbers</div>     
+                </div>
+            </div>
+        
+        
+    <!--GENDER-->
+        
+            <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="Select">Gender</label>
+            <div class="col-sm-4 ">
+                    <select formControlName="gender" class="form-control"[ngClass]="{'is-invalid':submitted && f.gender.errors}">
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                    </select>
+                        <div *ngIf="submitted && f.gender.errors" class="is-invalid">
+                                <div *ngIf="f.gender.errors.required"class="text-danger">Gender is required</div>
+                        </div>
+            </div>   
+      </div>
+
+   
+      <!--CONTACT NUMBER-->
+      <div class="form-group row">
+          <label class="col-sm-2 col-lg-2 col-md-2 col-form-label"  for="mobile" >Contact Number</label>
+          <div class="col-sm-4">
+              <input type="text" formControlName="contactNumber" class="form-control" placeholder="Mobile number" id="mobile" minlength="10" maxlength="10"  [ngClass]="{'is-invalid':submitted && f.contactNumber.errors}" >    
+                <div *ngIf="submitted && f.contactNumber.errors" class="is-invalid">
+                        <div *ngIf="f.contactNumber.errors.required" class="text-danger">Mobile number is required</div>
+                        <div *ngIf="f.contactNumber.errors.pattern" class="text-danger">Mobile Number contain only numbers</div>
+                        <div *ngIf="f.contactNumber.errors.minlength" class="text-danger">Conatin only 10 digits</div>
+                </div>
+    
+          </div>
+          
+          <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="altmobile">Alternate Contact </label>
+          <div class="col-sm-4">
+              <input type="text"class="form-control" formControlName="altContactNumber" placeholder="Alternate Mobile number" id="altmobile"  minlength="10" maxlength="10" >
+              <div *ngIf="submitted && f.altContactNumber.errors" class="is-invalid">
+                    
+                    <div *ngIf="f.altContactNumber.errors.pattern" class="text-danger">Mobile Number contain only numbers</div>
+                    <div *ngIf="f.altContactNumber.errors.minlength" class="text-danger">Conatin only 10 digits</div>
+            </div>
+          </div>
+      </div>
+
+      <!--EMAIL-->
+     <div class="form-group row">
+         <label class="col-sm-2 col-form-label"for="email">Email</label>
+         <div class="col-sm-10 col-lg-10-col-md-10">
+             <input type="text" formControlName="emailId" class="form-control" placeholder="Enter Mail" id="email"  [ngClass]="{'is-invalid':submitted && f.emailId.errors}" >
+         
+         <div *ngIf="submitted && f.emailId.errors" class="is-invalid">
+                <div *ngIf="f.emailId.errors.required" class="text-danger">email is required</div>
+                <div *ngIf="f.emailId.errors.email" class="text-danger" >Enter Valid mail.</div>
+        </div> 
+    </div>
+     </div>
+     <!--PASSWORD-->
+
+     <div class="form-group row ">
+         <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="password">Password</label>
+         <div class="col-sm-10 col-lg-10-col-md-10" >
+             <input type="password" formControlName="password" class="form-control" placeholder="Enter password" id="password" minlength="6" maxlength="12" [ngClass]="{'is-invalid':submitted && f.password.errors}">
+                <div *ngIf="submitted && f.password.errors" class="is-invalid">
+                    <div *ngIf="f.password.errors.required" class="text-danger">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength" class="text-danger">Minimum length is 6 characters</div>
+                    <div  *ngIf="f.password.errors.pattern" class=text-danger >Password should contain atleast 1 Special character, alphabet and number</div>
+                </div>
+         </div>
+     </div>
+     <!--BUTTONS-->
+     <div class="form-group row ">
+         <div class="col-2"></div>
+         <div class="col-4">
+             <button type="submit" class="btn btn-success">Submit</button>
+         </div>
+         <div class="col-4">
+             <button type="reset" class="btn btn-danger">Reset</button>
+         </div>
+         <div class="col-2"></div>
+     </div>
+</form>
+</div>
+<div class="col-2"></div>
+</div>
+</div>
+
+
+
+

@@ -1,0 +1,89 @@
+<app-admin></app-admin>
+<div class="container-fluid con-style">
+<div class="row">
+<div class="col-2"></div>
+<div class="col-8">
+ <h1 class="reg-heading">PILOT WORK SCHEDULE</h1>
+<form [formGroup]="pilotWorkSchduleForm" (ngSubmit)="workSchdule()">
+
+    <!-- Pilot Name-->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="lname">Pilot Id</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <!-- <input type="text" formControlName="PilotName" class="form-control" id="pname"placeholder="Pilot Name" [ngClass]="{ 'is-invalid': submitted && f.PilotName.errors }"> -->
+                
+                <select class="custom-select" formControlName="pilotId">
+                        <option value="" disabled>Choose the pilots</option>
+                        <option *ngFor="let manager of scheduledList" [ngValue]="manager.pilotId">Pilot ID :{{ manager.pilotId}}</option>
+                     </select>
+                
+                <!-- <div *ngIf="submitted && f.PilotId.errors" class="is-invalid">
+                    <div *ngIf="f.PilotId.errors.required" class="text-danger">Pilot Name is required</div>
+                    
+                </div> -->
+            </div>
+        </div>
+       
+        <!-- Daily schedule -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="dailySchedule">Daily Schedule </label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                 <input type="text" formControlName="dailySchedule" class="form-control" id="pSchedule"placeholder="Daily Schedule"  [ngClass]="{ 'is-invalid': submitted && f.dailySchedule.errors }"> 
+                
+               
+      
+                
+                
+                <div *ngIf="submitted && f.dailySchedule.errors" class="is-invalid">
+                    <div *ngIf="f.dailySchedule.errors.required" class="text-danger">Daily Schedule is required</div>
+                    <div *ngIf="f.dailySchedule.errors.pattern" class="text-danger">DailyWorkSchedule contains alphabets </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Schedule -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="OwnerEmail">Weekly Schedule</label>
+            <div class="col-sm-10 col-lg-10-col-md-10">
+                <input type="text" formControlName="weeklySchedule" class="form-control" id="pSchedule"placeholder="Weekly Schedule" [ngClass]="{ 'is-invalid': submitted && f.weeklySchedule.errors }">
+                <div *ngIf="submitted && f.weeklySchedule.errors" class="is-invalid">
+                    <div *ngIf="f.weeklySchedule.errors.required" class="text-danger">Weekly Schedule is required</div>
+                    <div *ngIf="f.weeklySchedule.errors.pattern" class="text-danger">weeklySchedule contains alphabets </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Scheduled -->
+        <div class="form-group row">
+                <label class="col-sm-2 col-lg-2 col-md-2 col-form-label" for="planeType">Monthly Schedule</label>
+                <div class="col-sm-10 col-lg-10-col-md-10">
+                    <input type="text" formControlName="monthlySchedule" class="form-control" id="pSchedule"placeholder="Monthly Schedule"  [ngClass]="{ 'is-invalid': submitted && f.monthlySchedule.errors }">
+                    <div *ngIf="submitted && f.monthlySchedule.errors" class="is-invalid">
+                        <div *ngIf="f.monthlySchedule.errors.required" class="text-danger">monthlySchedule is required</div>
+                        <div *ngIf="f.monthlySchedule.errors.pattern" class="text-danger">MonthlySchedule contains  alphabets  </div>
+                    </div>
+            </div>
+        </div>
+
+  
+        <div class=" form-group row">
+            <div class="col-2"></div>
+              
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                    <div class="col-4">
+                            <button type="reset" class="btn btn-danger">Reset</button>
+
+                    </div>
+                
+                
+            <div class="col-2"></div>
+        </div>
+        
+</form>
+</div>
+</div>
+<div class="col-2"></div>
+</div>
+

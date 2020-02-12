@@ -1,0 +1,11 @@
+.txtwhite{
+    color: white;
+}
+.planeicon{
+    vertical-align: middle;
+}
+.navbar a:hover
+{
+    background-color: white;
+    color:black;
+}
